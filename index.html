@@ -1,29 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Rust-Bio, a bioinformatics library for the Rust language. by rust-bio</title>
+    <meta name="description" content="Rust-Bio, a bioinformatics library for the Rust language. : ">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Rust-Bio, a bioinformatics library for the Rust language.</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Rust-Bio, a bioinformatics library for the Rust language.</h1>
-        <p></p>
 
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/rust-bio">View on GitHub</a>
 
-        <p class="view"><a href="https://github.com/rust-bio">View My GitHub Profile</a></p>
+          <h1 id="project_title">Rust-Bio, a bioinformatics library for the Rust language.</h1>
+          <h2 id="project_tagline"></h2>
 
-      </header>
-      <section>
-        <p>This library contains implementations of many algorithms and data structures
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><a href="https://travis-ci.org/rust-bio/rust-bio"><img src="https://travis-ci.org/rust-bio/rust-bio.svg?branch=master" alt="Build Status"></a>
+<a href="https://crates.io/crates/bio"><img src="http://meritbadge.herokuapp.com/bio" alt=""></a></p>
+
+<p>This library provides implementations of many algorithms and data structures
 that are useful for bioinformatics.
 All provided implementations are rigorously tested via continuous
 integration.</p>
@@ -43,22 +50,174 @@ integration.</p>
 <li>helper functions for combinatorics and dealing with log probabilities.</li>
 </ul>
 
-<p>For reading and writing BAM and BCF files, have a look at <a href="https://github.com/christopher-schroeder/rust-htslib">https://github.com/christopher-schroeder/rust-htslib</a>.</p>
+<p>For reading and writing BAM and BCF files, Rust-Bio is complemented by <a href="https://github.com/christopher-schroeder/rust-htslib">Rust-Htslib</a>.</p>
 
 <h2>
 <a id="resources" class="anchor" href="#resources" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resources</h2>
 
 <ul>
+<li><a href="https://github.com/rust-bio/rust-bio">Github project</a></li>
 <li><a href="https://rust-bio.github.io/rust-bio">Documentation</a></li>
 <li><a href="https://travis-ci.org/rust-bio/rust-bio">Continuous integration tests</a></li>
 <li><a href="https://github.com/rust-bio/rust-bio/issues/3">Roadmap</a></li>
 </ul>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>We explain how to use Rust-Bio step-by-step. Users who already have experience with Rust can skip the first two steps.</p>
+
+<h3>
+<a id="step-1-setting-up-rust" class="anchor" href="#step-1-setting-up-rust" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 1: Setting up Rust</h3>
+
+<p>Currently, Rust-Bio needs the development version (nightly) of Rust to compile properly, since it depends on features that are not in the stable branch yet.
+Rust nightly can be installed or updated by executing</p>
+
+<div class="highlight highlight-bash"><pre>curl -sSf https://static.rust-lang.org/rustup.sh <span class="pl-k">|</span> sh -s -- --channel=nightly</pre></div>
+
+<p>in your terminal.
+For details or alternative ways of installation, have a look at the "Nightly" section of the Rust <a href="https://www.rust-lang.org/install.html">download page</a>.</p>
+
+<h3>
+<a id="step-2-setting-up-a-new-rust-project" class="anchor" href="#step-2-setting-up-a-new-rust-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 2: Setting up a new Rust project</h3>
+
+<p>Since Rust-Bio is a library, you need to setup your own new Rust project to use Rust-Bio.
+With Rust, projects and their dependencies are managed with the builtin package manager <a href="https://crates.io/">Cargo</a>.
+To create a new Rust project, issue</p>
+
+<div class="highlight highlight-bash"><pre>cargo new hello_world --bin
+<span class="pl-c1">cd</span> hello_world</pre></div>
+
+<p>in your terminal. The flag <code>--bin</code> tells Cargo to create an executable project instead of a library.
+In <a href="http://doc.rust-lang.org/nightly/book/hello-cargo.html#a-new-project">this section</a> of the Rust docs, you find details about what Cargo just created for you.</p>
+
+<p>Your new project can be compiled with</p>
+
+<div class="highlight highlight-bash"><pre>cargo build</pre></div>
+
+<p>and executed with</p>
+
+<div class="highlight highlight-bash"><pre>cargo run</pre></div>
+
+<p>If you are new to Rust, we suggest to proceed with <a href="http://doc.rust-lang.org/nightly/book/learn-rust.html">learning Rust</a> via the Rust docs.</p>
+
+<h3>
+<a id="step-3-use-rust-bio-from-your-project" class="anchor" href="#step-3-use-rust-bio-from-your-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 3: Use Rust-Bio from your project</h3>
+
+<p>To use Rust-Bio in your Rust project, add the following to your <code>Cargo.toml</code></p>
+
+<div class="highlight highlight-toml"><pre>[<span class="pl-en">dependencies</span>]
+<span class="pl-smi">bio</span> = <span class="pl-s"><span class="pl-pds">"</span>*<span class="pl-pds">"</span></span></pre></div>
+
+<p>and import the crate from your source code:</p>
+
+<div class="highlight highlight-rust"><pre><span class="pl-k">extern crate</span> <span class="pl-c1">bio</span><span class="pl-k">;</span></pre></div>
+
+<h3>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h3>
+
+<p>An example usage of Rust-Bio is presented in the following:</p>
+
+<div class="highlight highlight-rust"><pre><span class="pl-c">// Import some modules</span>
+<span class="pl-k">use</span> bio::alphabets<span class="pl-k">;</span>
+<span class="pl-k">use</span> bio::data_structures::suffix_array::suffix_array<span class="pl-k">;</span>
+<span class="pl-k">use</span> bio::data_structures::bwt::bwt<span class="pl-k">;</span>
+<span class="pl-k">use</span> bio::data_structures::fmindex::FMIndex<span class="pl-k">;</span>
+<span class="pl-k">use</span> bio::io::fastq<span class="pl-k">;</span>
+
+<span class="pl-c">// Create an FM-Index for a given text.</span>
+<span class="pl-k">let</span> <span class="pl-smi">alphabet</span> <span class="pl-k">=</span> alphabets::dna::<span class="pl-c1">iupac_alphabet</span>()<span class="pl-k">;</span>
+<span class="pl-k">let</span> <span class="pl-smi">pos</span> <span class="pl-k">=</span> <span class="pl-c1">suffix_array</span>(text)<span class="pl-k">;</span>
+<span class="pl-k">let</span> <span class="pl-smi">bwt</span> <span class="pl-k">=</span> <span class="pl-c1">bwt</span>(text<span class="pl-k">,</span> <span class="pl-k">&amp;</span>pos)<span class="pl-k">;</span>
+<span class="pl-k">let</span> <span class="pl-smi">fmindex</span> <span class="pl-k">=</span> FMIndex::<span class="pl-c1">new</span>(<span class="pl-k">&amp;</span>bwt<span class="pl-k">,</span> <span class="pl-c1">3</span><span class="pl-k">,</span> <span class="pl-k">&amp;</span>alphabet)<span class="pl-k">;</span>
+
+
+<span class="pl-c">// Iterate over a FASTQ file, use the alphabet to validate read</span>
+<span class="pl-c">// sequences and search for exact matches in the FM-Index.</span>
+<span class="pl-k">let</span> <span class="pl-smi">reader</span> <span class="pl-k">=</span> fastq::Reader::<span class="pl-c1">from_file</span>(<span class="pl-s">"reads.fastq"</span>)<span class="pl-k">;</span>
+<span class="pl-k">for</span> record <span class="pl-k">in</span> reader<span class="pl-k">.</span><span class="pl-c1">records</span>() {
+    <span class="pl-k">let</span> <span class="pl-smi">seq</span> <span class="pl-k">=</span> record<span class="pl-k">.</span><span class="pl-c1">seq</span>()<span class="pl-k">;</span>
+    <span class="pl-k">if</span> alphabet<span class="pl-k">.</span><span class="pl-c1">is_word</span>(seq) {
+        <span class="pl-k">let</span> <span class="pl-smi">interval</span> <span class="pl-k">=</span> fmindex<span class="pl-k">.</span><span class="pl-c1">backward_search</span>(seq<span class="pl-k">.</span><span class="pl-c1">iter</span>())<span class="pl-k">;</span>
+        <span class="pl-k">let</span> <span class="pl-smi">positions</span> <span class="pl-k">=</span> interval<span class="pl-k">.</span><span class="pl-c1">occ</span>(<span class="pl-k">&amp;</span>pos)<span class="pl-k">;</span>
+    }
+}</pre></div>
+
+<p>For more information and additional examples, please read the <a href="https://rust-bio.github.io/rust-bio">documentation</a>.</p>
+
+<h2>
+<a id="benchmarks" class="anchor" href="#benchmarks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Benchmarks</h2>
+
+<p>Since Rust-Bio is based on a compiled language, similar performance to C/C++ based libraries can be expected. Indeed, we find the pattern matching algorithms of Rust-Bio to perform in the range of the C++ library Seqan:</p>
+
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th align="right">Rust-Bio</th>
+<th align="right">Seqan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BNDM</td>
+<td align="right">77ms</td>
+<td align="right">80ms</td>
+</tr>
+<tr>
+<td>Horspool</td>
+<td align="right">122ms</td>
+<td align="right">125ms</td>
+</tr>
+<tr>
+<td>BOM</td>
+<td align="right">103ms</td>
+<td align="right">107ms</td>
+</tr>
+<tr>
+<td>Shift-And</td>
+<td align="right">241ms</td>
+<td align="right">545ms</td>
+</tr>
+</tbody>
+</table>
+
+<p>We measured 10000 iterations of searching pattern <code>GCGCGTACACACCGCCCG</code> in the sequence of the hg38 MT chromosome.
+Initialization time of each algorithm for the given pattern was included in each iteration. Benchmarks were conducted with <em>Cargo bench</em> for Rust-Bio and <em>Python timeit</em> for Seqan on an Intel Core i5-3427U CPU.
+Benchmarking Seqan from <em>Python timeit</em> entails an overhead of 1.46ms for calling a C++ binary. This overhead was subtracted from above Seqan run times.
+Note that this benchmark only compares the two libraries to exemplify that Rust-Bio has comparable speed to C++ libraries: all used algorithms have their advantages for specific text and pattern structures and lengths (see <a href="http://rust-bio.github.io/rust-bio/bio/pattern_matching/index.html">the pattern matching section in the documentation</a>).</p>
+
+<h2>
+<a id="author" class="anchor" href="#author" aria-hidden="true"><span class="octicon octicon-link"></span></a>Author</h2>
+
+<p>Johannes Köster (<a href="mailto:koester@jimmy.harvard.edu">koester@jimmy.harvard.edu</a>)</p>
+
+<h2>
+<a id="contributors" class="anchor" href="#contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributors</h2>
+
+<ul>
+<li>Christopher Schröder (<a href="mailto:christopher.schroeder@uni-due.de">christopher.schroeder@uni-due.de</a>)</li>
+<li>Peer Aramillo Irizar</li>
+<li>Fedor Gusev</li>
+</ul>
+
+<p>The next name in this list could be you! If you are interested in joining the effort to build a general purpose Rust bioinformatics library, just introduce yourself <a href="https://github.com/rust-bio/rust-bio/issues/3">here</a>, or issue a pull request with your first contribution.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Licensed under the MIT license <a href="http://opensource.org/licenses/MIT">http://opensource.org/licenses/MIT</a>. This project may not be copied, modified, or distributed except according to those terms.</p>
       </section>
-      <footer>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
+
     
+
   </body>
 </html>
