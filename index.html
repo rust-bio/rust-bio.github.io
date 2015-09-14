@@ -79,7 +79,7 @@ integration.</p>
 <p>Currently, Rust-Bio needs the development version (nightly) of Rust to compile properly, since it depends on features that are not in the stable branch yet.
 Rust nightly can be installed or updated by executing</p>
 
-<div class="highlight highlight-bash"><pre>curl -sSf https://static.rust-lang.org/rustup.sh <span class="pl-k">|</span> sh -s -- --channel=nightly</pre></div>
+<div class="highlight highlight-source-shell"><pre>curl -sSf https://static.rust-lang.org/rustup.sh <span class="pl-k">|</span> sh -s -- --channel=nightly</pre></div>
 
 <p>in your terminal.
 For details or alternative ways of installation, have a look at the "Nightly" section of the Rust <a href="https://www.rust-lang.org/install.html">download page</a>.</p>
@@ -91,7 +91,7 @@ For details or alternative ways of installation, have a look at the "Nightly" se
 With Rust, projects and their dependencies are managed with the builtin package manager <a href="https://crates.io/">Cargo</a>.
 To create a new Rust project, issue</p>
 
-<div class="highlight highlight-bash"><pre>cargo new hello_world --bin
+<div class="highlight highlight-source-shell"><pre>cargo new hello_world --bin
 <span class="pl-c1">cd</span> hello_world</pre></div>
 
 <p>in your terminal. The flag <code>--bin</code> tells Cargo to create an executable project instead of a library.
@@ -99,15 +99,15 @@ In <a href="http://doc.rust-lang.org/nightly/book/hello-cargo.html#a-new-project
 
 <p>Your new project can be compiled with</p>
 
-<div class="highlight highlight-bash"><pre>cargo build</pre></div>
+<div class="highlight highlight-source-shell"><pre>cargo build</pre></div>
 
 <p>If dependencies in your project are out of date, update with</p>
 
-<div class="highlight highlight-bash"><pre>cargo update</pre></div>
+<div class="highlight highlight-source-shell"><pre>cargo update</pre></div>
 
 <p>Execute the compiled code with</p>
 
-<div class="highlight highlight-bash"><pre>cargo run</pre></div>
+<div class="highlight highlight-source-shell"><pre>cargo run</pre></div>
 
 <p>If you are new to Rust, we suggest to proceed with <a href="http://doc.rust-lang.org/nightly/book/learn-rust.html">learning Rust</a> via the Rust docs.</p>
 
@@ -116,19 +116,19 @@ In <a href="http://doc.rust-lang.org/nightly/book/hello-cargo.html#a-new-project
 
 <p>To use Rust-Bio in your Rust project, add the following to your <code>Cargo.toml</code></p>
 
-<div class="highlight highlight-toml"><pre>[<span class="pl-en">dependencies</span>]
+<div class="highlight highlight-source-toml"><pre>[<span class="pl-en">dependencies</span>]
 <span class="pl-smi">bio</span> = <span class="pl-s"><span class="pl-pds">"</span>*<span class="pl-pds">"</span></span></pre></div>
 
 <p>and import the crate from your source code:</p>
 
-<div class="highlight highlight-rust"><pre><span class="pl-k">extern crate</span> <span class="pl-c1">bio</span><span class="pl-k">;</span></pre></div>
+<div class="highlight highlight-source-rust"><pre><span class="pl-k">extern crate</span> <span class="pl-c1">bio</span><span class="pl-k">;</span></pre></div>
 
 <h3>
 <a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h3>
 
 <p>An example usage of Rust-Bio is presented in the following:</p>
 
-<div class="highlight highlight-rust"><pre><span class="pl-c">// Import some modules</span>
+<div class="highlight highlight-source-rust"><pre><span class="pl-c">// Import some modules</span>
 <span class="pl-k">use</span> bio::alphabets<span class="pl-k">;</span>
 <span class="pl-k">use</span> bio::data_structures::suffix_array::suffix_array<span class="pl-k">;</span>
 <span class="pl-k">use</span> bio::data_structures::bwt::bwt<span class="pl-k">;</span>
@@ -153,7 +153,7 @@ In <a href="http://doc.rust-lang.org/nightly/book/hello-cargo.html#a-new-project
     }
 }</pre></div>
 
-<p>For more information and additional examples, please read the <a href="https://rust-bio.github.io/rust-bio">documentation</a>.</p>
+<p>This example shall only illustrate the API (e.g. we don't provide the <code>reads.fastq</code> file). For more information and working examples for each provided algorithm, please read the <a href="https://rust-bio.github.io/rust-bio">documentation</a>.</p>
 
 <h2>
 <a id="benchmarks" class="anchor" href="#benchmarks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Benchmarks</h2>
