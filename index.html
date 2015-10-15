@@ -86,7 +86,7 @@ Rust can be installed or updated by executing</p>
 
 <div class="highlight highlight-source-shell"><pre>curl -sSf https://static.rust-lang.org/rustup.sh <span class="pl-k">|</span> sh</pre></div>
 
-<p>in your terminal.
+<p>in your terminal. Depending on the age of your system, the registered CA certificates might not be new enough and curl will display an error about being unable to verify the certificate. In that case, you can add a flag -k to proceed.
 For details or alternative ways of installation, have a look at the <a href="https://www.rust-lang.org/install.html">Rust download page</a>.</p>
 
 <h3>
