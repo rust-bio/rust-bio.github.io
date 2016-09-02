@@ -136,21 +136,38 @@ In <a href="https://doc.rust-lang.org/nightly/book/hello-cargo.html#a-new-projec
 <div class="highlight highlight-source-rust"><pre><span class="pl-c">// Import some modules</span>
 <span class="pl-k">use</span> bio<span class="pl-k">::</span>alphabets<span class="pl-k">;</span>
 <span class="pl-k">use</span> bio<span class="pl-k">::</span>data_structures<span class="pl-k">::</span>suffix_array<span class="pl-k">::</span>suffix_array<span class="pl-k">;</span>
-<span class="pl-k">use</span> bio<span class="pl-k">::</span>data_structures<span class="pl-k">::</span>bwt<span class="pl-k">::</span>bwt<span class="pl-k">;</span>
-<span class="pl-k">use</span> bio<span class="pl-k">::</span>data_structures<span class="pl-k">::</span>fmindex<span class="pl-k">::</span><span class="pl-k">FMIndex</span><span class="pl-k">;</span>
+<span class="pl-k">use</span> bio<span class="pl-k">::</span>data_structures<span class="pl-k">::</span>bwt<span class="pl-k">::</span>{bwt<span class="pl-k">,</span> less<span class="pl-k">,</span> <span class="pl-k">Occ</span>}<span class="pl-k">;</span>
+<span class="pl-k">use</span> bio<span class="pl-k">::</span>data_structures<span class="pl-k">::</span>fmindex<span class="pl-k">::</span>{<span class="pl-k">FMIndex</span><span class="pl-k">,</span> <span class="pl-k">FMIndexable</span>}<span class="pl-k">;</span>
 <span class="pl-k">use</span> bio<span class="pl-k">::</span>io<span class="pl-k">::</span>fastq<span class="pl-k">;</span>
 
-<span class="pl-c">// Create an FM-Index for a given text.</span>
+
+<span class="pl-c">// a given text</span>
+<span class="pl-k">let</span> text <span class="pl-k">=</span> b<span class="pl-s">"ACAGCTCGATCGGTA"</span><span class="pl-k">;</span>
+
+<span class="pl-c">// Create an FM-Index for the given text.</span>
+
+<span class="pl-c">// instantiate an alphabet</span>
 <span class="pl-k">let</span> alphabet <span class="pl-k">=</span> alphabets<span class="pl-k">::</span>dna<span class="pl-k">::</span><span class="pl-c1">iupac_alphabet</span>()<span class="pl-k">;</span>
+<span class="pl-c">// calculate a suffix array</span>
 <span class="pl-k">let</span> pos <span class="pl-k">=</span> <span class="pl-c1">suffix_array</span>(text)<span class="pl-k">;</span>
+<span class="pl-c">// calculate BWT</span>
 <span class="pl-k">let</span> bwt <span class="pl-k">=</span> <span class="pl-c1">bwt</span>(text<span class="pl-k">,</span> <span class="pl-k">&amp;</span>pos)<span class="pl-k">;</span>
-<span class="pl-k">let</span> fmindex <span class="pl-k">=</span> <span class="pl-k">FMIndex</span><span class="pl-k">::</span><span class="pl-c1">new</span>(<span class="pl-k">&amp;</span>bwt<span class="pl-k">,</span> <span class="pl-c1">3</span><span class="pl-k">,</span> <span class="pl-k">&amp;</span>alphabet)<span class="pl-k">;</span>
+<span class="pl-c">// calculate less and Occ</span>
+<span class="pl-k">let</span> less <span class="pl-k">=</span> <span class="pl-c1">less</span>(<span class="pl-k">&amp;</span>bwt<span class="pl-k">,</span> <span class="pl-k">&amp;</span>alphabet)<span class="pl-k">;</span>
+<span class="pl-k">let</span> occ <span class="pl-k">=</span> <span class="pl-k">Occ</span><span class="pl-k">::</span><span class="pl-c1">new</span>(<span class="pl-k">&amp;</span>bwt<span class="pl-k">,</span> <span class="pl-c1">3</span><span class="pl-k">,</span> <span class="pl-k">&amp;</span>alphabet)<span class="pl-k">;</span>
+<span class="pl-c">// setup FMIndex</span>
+<span class="pl-k">let</span> fmindex <span class="pl-k">=</span> <span class="pl-k">FMIndex</span><span class="pl-k">::</span><span class="pl-c1">new</span>(<span class="pl-k">&amp;</span>bwt<span class="pl-k">,</span> <span class="pl-k">&amp;</span>less<span class="pl-k">,</span> <span class="pl-k">&amp;</span>occ)<span class="pl-k">;</span>
 
 
 <span class="pl-c">// Iterate over a FASTQ file, use the alphabet to validate read</span>
 <span class="pl-c">// sequences and search for exact matches in the FM-Index.</span>
-<span class="pl-k">let</span> reader <span class="pl-k">=</span> fastq<span class="pl-k">::</span><span class="pl-k">Reader</span><span class="pl-k">::</span><span class="pl-c1">from_file</span>(<span class="pl-s">"reads.fastq"</span>)<span class="pl-k">;</span>
-<span class="pl-k">for</span> record <span class="pl-k">in</span> reader<span class="pl-k">.</span><span class="pl-c1">records</span>() {
+
+<span class="pl-c">// obtain reader or fail with error (via the unwrap method)</span>
+<span class="pl-k">let</span> reader <span class="pl-k">=</span> fastq<span class="pl-k">::</span><span class="pl-k">Reader</span><span class="pl-k">::</span><span class="pl-c1">from_file</span>(<span class="pl-s">"reads.fastq"</span>)<span class="pl-k">.</span><span class="pl-c1">unwrap</span>()<span class="pl-k">;</span>
+<span class="pl-k">for</span> result <span class="pl-k">in</span> reader<span class="pl-k">.</span><span class="pl-c1">records</span>() {
+    <span class="pl-c">// obtain record or fail with error</span>
+    <span class="pl-k">let</span> record <span class="pl-k">=</span> result<span class="pl-k">.</span><span class="pl-c1">unwrap</span>()<span class="pl-k">;</span>
+    <span class="pl-c">// obtain sequence</span>
     <span class="pl-k">let</span> seq <span class="pl-k">=</span> record<span class="pl-k">.</span><span class="pl-c1">seq</span>()<span class="pl-k">;</span>
     <span class="pl-k">if</span> alphabet<span class="pl-k">.</span><span class="pl-c1">is_word</span>(seq) {
         <span class="pl-k">let</span> interval <span class="pl-k">=</span> fmindex<span class="pl-k">.</span><span class="pl-c1">backward_search</span>(seq<span class="pl-k">.</span><span class="pl-c1">iter</span>())<span class="pl-k">;</span>
