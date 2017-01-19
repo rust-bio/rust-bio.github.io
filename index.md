@@ -2,6 +2,7 @@
 [![Crates.io](https://img.shields.io/crates/v/bio.svg?style=flat-square)](https://crates.io/crates/bio)
 [![Crates.io](https://img.shields.io/crates/l/bio.svg?style=flat-square)](https://crates.io/crates/bio)
 [![Travis](https://img.shields.io/travis/rust-bio/rust-bio.svg?style=flat-square)](https://travis-ci.org/rust-bio/rust-bio)
+[![Coveralls](https://img.shields.io/coveralls/rust-bio/rust-bio.svg?style=flat-square)](https://coveralls.io/github/rust-bio/rust-bio)
 
 [![GitHub watchers](https://img.shields.io/github/watchers/rust-bio/rust-bio.svg?style=social&label=Watch)](https://github.com/rust-bio/rust-bio/watchers)
 [![GitHub stars](https://img.shields.io/github/stars/rust-bio/rust-bio.svg?style=social&label=Star)](https://github.com/rust-bio/rust-bio/stargazers)
