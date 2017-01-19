@@ -101,6 +101,7 @@ extern crate bio;
 ### Example
 
 An example usage of Rust-Bio is presented in the following:
+
 ```rust
 // Import some modules
 use bio::alphabets;
@@ -180,9 +181,12 @@ Note that this benchmark only compares the two libraries to exemplify that Rust-
 * [Adam Perry](https://github.com/dikaiosune)
 * [Taylor Cramer](https://github.com/cramertj)
 * [Andre Bogus](https://github.com/llogiq)
+* [Martin Larralde](https://github.com/althonos)
 * Philipp Angerer
 * [Pierre Marijon](https://github.com/natir)
 * [Franklin Delehelle](https://github.com/delehef)
+* [Marcin Fatyga](https://github.com/rednum)
+* [Patrick Marks](https://github.com/pmarks)
 
 The next name in this list could be you! If you are interested in joining the effort to build a general purpose Rust bioinformatics library, just introduce yourself [here](https://github.com/rust-bio/rust-bio/issues/27), or issue a pull request with your first contribution.
 
