@@ -35,7 +35,7 @@ When using Rust-Bio, please cite the following article:
 ## Resources
 
 * [News](https://github.com/rust-bio/rust-bio/releases)
-* [API Documentation](https://rust-bio.github.io/rust-bio)
+* [API Documentation](https://docs.rs/bio)
 * [Issues](https://github.com/rust-bio/rust-bio/issues)
 * [Roadmap](https://github.com/rust-bio/rust-bio/issues/3)
 * [Continuous integration tests](https://travis-ci.org/rust-bio/rust-bio)
