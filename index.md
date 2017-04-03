@@ -1,8 +1,8 @@
-[![Crates.io](https://img.shields.io/crates/d/bio.svg?style=flat-square)](https://crates.io/crates/bio)
-[![Crates.io](https://img.shields.io/crates/v/bio.svg?style=flat-square)](https://crates.io/crates/bio)
-[![Crates.io](https://img.shields.io/crates/l/bio.svg?style=flat-square)](https://crates.io/crates/bio)
-[![Travis](https://img.shields.io/travis/rust-bio/rust-bio.svg?style=flat-square)](https://travis-ci.org/rust-bio/rust-bio)
-[![Coveralls](https://img.shields.io/coveralls/rust-bio/rust-bio.svg?style=flat-square)](https://coveralls.io/github/rust-bio/rust-bio)
+[![Crates.io](https://img.shields.io/crates/d/bio.svg)](https://crates.io/crates/bio)
+[![Crates.io](https://img.shields.io/crates/v/bio.svg)](https://crates.io/crates/bio)
+[![Crates.io](https://img.shields.io/crates/l/bio.svg)](https://crates.io/crates/bio)
+[![Travis](https://img.shields.io/travis/rust-bio/rust-bio.svg)](https://travis-ci.org/rust-bio/rust-bio)
+[![Coveralls](https://img.shields.io/coveralls/rust-bio/rust-bio.svg)](https://coveralls.io/github/rust-bio/rust-bio)
 
 [![GitHub watchers](https://img.shields.io/github/watchers/rust-bio/rust-bio.svg?style=social&label=Watch)](https://github.com/rust-bio/rust-bio/watchers)
 [![GitHub stars](https://img.shields.io/github/stars/rust-bio/rust-bio.svg?style=social&label=Star)](https://github.com/rust-bio/rust-bio/stargazers)
@@ -31,6 +31,10 @@ For reading and writing SAM/BAM, CRAM and VCF/BCF files, Rust-Bio is complemente
 When using Rust-Bio, please cite the following article:
 
 [Köster, J. (2015). Rust-Bio: a fast and safe bioinformatics library. Bioinformatics.](http://bioinformatics.oxfordjournals.org/content/early/2015/10/06/bioinformatics.btv573.short?rss=1)
+
+Further, you can cite the used versions via DOIs:
+
+Rust-Bio: [![DOI](https://zenodo.org/badge/29821195.svg)](https://zenodo.org/badge/latestdoi/29821195)
 
 ## Resources
 
