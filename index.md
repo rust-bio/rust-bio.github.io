@@ -30,7 +30,7 @@ For reading and writing SAM/BAM, CRAM and VCF/BCF files, Rust-Bio is complemente
 
 When using Rust-Bio, please cite the following article:
 
-[Köster, J. (2015). Rust-Bio: a fast and safe bioinformatics library. Bioinformatics.](http://bioinformatics.oxfordjournals.org/content/early/2015/10/06/bioinformatics.btv573.short?rss=1)
+[Köster, J. (2016). Rust-Bio: a fast and safe bioinformatics library. Bioinformatics, 32(3), 444-446.](http://bioinformatics.oxfordjournals.org/content/early/2015/10/06/bioinformatics.btv573.short?rss=1)
 
 Further, you can cite the used versions via DOIs:
 
